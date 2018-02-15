@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game.gd" type="Script" id=1]
+[ext_resource path="res://pig.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 519.758, 77.2417 )
+
+[node name="root" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Label" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 341.0
+margin_top = 98.0
+margin_right = 608.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "This is my game! I'm sorry it's so boring :("
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pig_spawner" type="Button" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 424.0
+margin_top = 145.0
+margin_right = 520.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Gimme A Pig"
+flat = false
+align = 1
+
+[node name="exploder" type="Area2D" parent="." index="2"]
+
+position = Vector2( 545.297, 518.032 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exploder" index="0"]
+
+position = Vector2( -39.5638, 34.0645 )
+shape = SubResource( 2 )
+
+[node name="finder" type="Position2D" parent="." index="3"]
+
+position = Vector2( 480.054, 341.642 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pig" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 661.269, 153.524 )
+
+[node name="pig_spawn" type="Position2D" parent="." index="5"]
+
+position = Vector2( 536.234, -93.1485 )
+
+[connection signal="body_entered" from="exploder" to="." method="_on_exploder_body_entered"]
+
+

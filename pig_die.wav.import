@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pig_die.wav-a3df559e555a0a8a0d143e9b3c6d8755.sample"
+
+[deps]
+
+source_file="res://pig_die.wav"
+source_md5="3d1ca7c86bba5487209f431f965f099a"
+
+dest_files=[ "res://.import/pig_die.wav-a3df559e555a0a8a0d143e9b3c6d8755.sample" ]
+dest_md5="246848719c360a234bf0e621a25f2dd0"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
