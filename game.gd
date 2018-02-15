@@ -7,6 +7,7 @@ extends Control
 func _ready():
 	$exploder.connect("body_entered", self, "_on_exploder_body_entered")
 	$pig_spawner.connect("pressed", self, "make_pig")
+	$pig_spawner.connect("pressed", self, "make_gorrila")
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
@@ -22,4 +23,9 @@ func make_pig():
 	var new_pig = Pig.instance()
 	new_pig.global_position = $pig_spawn.global_position
 	add_child(new_pig)
-	
+
+func make_gorrila():
+	var Pig = preload("res://gorrila.tscn")
+	var new_pig = Pig.instance()
+	new_pig.global_position = $pig_spawn.global_position
+	add_child(new_pig)

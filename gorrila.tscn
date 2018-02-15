@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://pig.gd" type="Script" id=1]
+[ext_resource path="res://banana_explosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gorrila.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 120.674
+
+[node name="gorrila" type="RigidBody2D" groups=[
+"pig",
+]]
+
+position = Vector2( 500.436, -286.835 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 1.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Angular" ]
+Explosion = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 17.2632, -7.19043 )
+scale = Vector2( 1.55082, 1.37398 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 5.44147, -17.6848 )
+shape = SubResource( 1 )
+
+
