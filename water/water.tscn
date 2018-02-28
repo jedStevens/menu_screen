@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://water/flowmap.jpg" type="Texture" id=1]
+[ext_resource path="res://water/water.jpg" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform sampler2D water_texture;
+uniform sampler2D flow_texture;
+
+uniform float cycle_duration = 5.0;
+uniform float amount = 0.5;
+
+void fragment(){
+	float time = mod(TIME, cycle_duration) / cycle_duration;
+	vec2 dir = texture(flow_texture, UV).rg - vec2(0.5,0.5);
+	vec2 flowUV = UV + dir * amount * time;
+	
+	vec4 col1 = texture(water_texture, flowUV);
+	
+	float time_s = mod(TIME + cycle_duration / 2.0, cycle_duration) / cycle_duration;
+	vec2 flowUV_s = UV + dir * amount * time_s;
+	
+	vec4 col2 = texture(water_texture, flowUV_s);
+	
+	float a1 = -abs(2.0*time - 1.0) + 1.0;
+	float a2 = -abs(2.0*time_s - 1.0) + 1.0;
+	
+	COLOR = col1 *a1 + col2*a2;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/cycle_duration = 5.0
+shader_param/amount = 0.5
+shader_param/water_texture = ExtResource( 2 )
+shader_param/flow_texture = ExtResource( 1 )
+_sections_unfolded = [ "shader_param" ]
+
+[node name="Sprite" type="Sprite"]
+
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material" ]
+
+
